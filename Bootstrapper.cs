@@ -6,7 +6,7 @@ using System.IO;
 
 namespace just_cli
 {
-    class Program
+    class Bootstrapper
     {
         private const string ConfigFileName = "just.json";
 
