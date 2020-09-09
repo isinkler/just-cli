@@ -1,4 +1,4 @@
-﻿namespace just_cli
+﻿namespace JustCli
 {
     public class Configuration
     {
