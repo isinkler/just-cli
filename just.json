@@ -1,5 +1,0 @@
-{
-  "commands" : {
-    "start" : "dotnet -h"  
-  }
-}
