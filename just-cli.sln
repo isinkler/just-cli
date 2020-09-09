@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "just-cli", "just-cli.csproj", "{CAA94D27-1180-4F79-BD71-6DC02E899102}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "just-cli", "src/just-cli.csproj", "{CAA94D27-1180-4F79-BD71-6DC02E899102}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
