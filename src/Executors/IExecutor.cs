@@ -4,6 +4,8 @@
     {
         void Execute();
         
-        string GetCommandText();
+        string GetExecutable();
+        
+        string GetArguments();
     }
 }

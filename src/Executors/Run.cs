@@ -1,17 +1,24 @@
-﻿using JustCli.Configuration;
-
-namespace JustCli.Executors
+﻿namespace JustCli.Executors
 {
     public class Run : Executor
     {
         public override void Execute()
         {
-            
+            ExecuteCommand(GetExecutable(), GetArguments());
         }
 
-        public override string GetCommandText()
+        public override string GetExecutable()
         {
-            return null;
+            string[] command = Configuration.Commands.Run.Split(' ', 2);
+            
+            return command[0];
+        }
+
+        public override string GetArguments()
+        {
+            string[] command = Configuration.Commands.Run.Split(' ', 2);
+            
+            return command[1];
         }
     }
 }

@@ -9,7 +9,7 @@ namespace JustCli.Configuration
     {
         private const string ConfigFileName = "just.json";
         
-        internal static Configuration GetConfiguration(string configDirectory)
+        public static Config GetConfiguration(string configDirectory)
         {
             var configFilePath = $"{configDirectory}\\{ConfigFileName}";
 
@@ -17,7 +17,7 @@ namespace JustCli.Configuration
             {
                 string configFileContent = File.ReadAllText(configFilePath);
 
-                var configuration = JsonConvert.DeserializeObject<Configuration>(configFileContent);
+                var configuration = JsonConvert.DeserializeObject<Config>(configFileContent);
 
                 return configuration;
 
