@@ -1,4 +1,4 @@
-﻿namespace JustCli
+﻿namespace JustCli.Configuration
 {
     public class Configuration
     {
@@ -7,6 +7,6 @@
 
     public class Commands
     {
-        public string Start { get; set; }
+        public string Run { get; set; }
     }
 }

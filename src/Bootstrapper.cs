@@ -1,58 +1,50 @@
-﻿using Newtonsoft.Json;
+﻿using System.Diagnostics;
 
-using System;
-using System.Diagnostics;
-using System.IO;
+using JustCli.Configuration;
+using JustCli.Executors;
+
 
 namespace JustCli
 {
     class Bootstrapper
     {
-        private const string ConfigFileName = "just.json";
+        
 
-        static void Main(string[] args)
+        public static void Run(Command command, string configDirectory)
         {
-            Configuration configuration = GetConfiguration();
+            Configuration.Configuration configuration = Configurator.GetConfiguration(configDirectory);
 
-            var command = configuration.Commands.Start.Split(' ', 2);
-
-            ExecuteCommand(command);
-        }
-
-        private static Configuration GetConfiguration()
-        {
-            string currentDirectoryPath = Directory.GetCurrentDirectory();
-            string configFilePath = $"{currentDirectoryPath}\\{ConfigFileName}";
-
-            try
-            {
-                string configFileContent = File.ReadAllText(configFilePath);
-
-                Configuration configuration = JsonConvert.DeserializeObject<Configuration>(configFileContent);
-
-                return configuration;
-
-            } catch(FileNotFoundException)
-            {
-                Console.WriteLine("just can't find a just.json file in your current directory.");
-
-                Environment.Exit(0);
+            Executor executor = Executor.GetExecutor(command);
+            
+            executor.Configuration = configuration;
+            executor.Execute();
+            // switch(command)
+            // {
+            //     case Command.Run:
+            //
+            //         string[] command = configuration.Commands.Run.Split(' ',  2);
+            //         string fileName = command[0];
+            //         string arguments = command[1];
+            //
+            //         ExecuteCommand(fileName, arguments);
+            //
+            //         break;
             }
-
-            return default;
         }
 
-        private static void ExecuteCommand(string[] command)
-        {
-            var process = new Process();
+        
 
-            process.StartInfo = new ProcessStartInfo(command[0], command[1])
-            {
-                UseShellExecute = false
-            };
-
-            process.Start();
-            process.WaitForExit();
-        }
-    }
+        // private static void ExecuteCommand(string fileName, string arguments)
+        // {
+        //     var process = new Process();
+        //
+        //     process.StartInfo = new ProcessStartInfo(fileName, arguments)
+        //     {
+        //         UseShellExecute = false
+        //     };
+        //
+        //     process.Start();
+        //     process.WaitForExit();
+        // }
+    
 }
