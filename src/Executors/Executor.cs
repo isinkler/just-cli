@@ -1,13 +1,15 @@
-﻿using JustCli.Configuration;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+
+using JustCli.Configuration;
 
 namespace JustCli.Executors
 {
     public abstract class Executor : IExecutor
     {
+        public Config Configuration { get; set; }
+
         public abstract void Execute();
 
         public abstract string GetExecutable();
@@ -20,14 +22,14 @@ namespace JustCli.Executors
             {
                 case Command.Run:
                     return new Run();
-                
+
                 case Command.Init:
                     break;
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(command), command, null);
             }
-            
+
             throw new InvalidEnumArgumentException();
         }
 
@@ -44,7 +46,5 @@ namespace JustCli.Executors
             process.Start();
             process.WaitForExit();
         }
-
-        public Config Configuration { get; set; }
     }
 }
