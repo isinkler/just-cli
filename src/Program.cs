@@ -3,8 +3,6 @@ using System.IO;
 
 using McMaster.Extensions.CommandLineUtils;
 
-// ReSharper disable once UnusedMember.Local
-
 namespace JustCli
 {
     internal class Program

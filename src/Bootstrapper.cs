@@ -1,5 +1,4 @@
-﻿using JustCli.Configuration;
-using JustCli.Executors;
+﻿using JustCli.Executors;
 
 namespace JustCli
 {
@@ -7,11 +6,8 @@ namespace JustCli
     {
         public static void Run(Command command, string configDirectory)
         {
-            Config configuration = Configurator.GetConfiguration(configDirectory);
+            var executor = Executor.GetExecutor(command, configDirectory);
 
-            var executor = Executor.GetExecutor(command);
-
-            executor.Configuration = configuration;
             executor.Execute();
         }
     }

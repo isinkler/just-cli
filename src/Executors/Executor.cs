@@ -8,23 +8,28 @@ namespace JustCli.Executors
 {
     public abstract class Executor : IExecutor
     {
-        public Config Configuration { get; set; }
+        protected Executor ()
+        {
+        }
+
+        protected Executor(string directory)
+        {
+            Configuration = Configurator.GetConfiguration(directory);
+        }
+
+        protected Config Configuration { get; set; }
 
         public abstract void Execute();
 
-        public abstract string GetExecutable();
-
-        public abstract string GetArguments();
-
-        public static Executor GetExecutor(Command command)
+        public static Executor GetExecutor(Command command, string directory)
         {
             switch (command)
             {
                 case Command.Run:
-                    return new Run();
+                    return new Run(directory);
 
                 case Command.Init:
-                    break;
+                    return new Init();
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(command), command, null);
