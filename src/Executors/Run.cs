@@ -2,6 +2,10 @@
 {
     public class Run : Executor
     {
+        public Run(string directory) : base(directory)
+        {
+        }
+
         public override void Execute()
         {
             ExecuteCommand(GetExecutable(), GetArguments());
