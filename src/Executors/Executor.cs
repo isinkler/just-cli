@@ -10,9 +10,8 @@ namespace JustCli.Executors
     {
         protected Executor ()
         {
-            
         }
-        
+
         protected Executor(string directory)
         {
             Configuration = Configurator.GetConfiguration(directory);
@@ -21,10 +20,6 @@ namespace JustCli.Executors
         protected Config Configuration { get; set; }
 
         public abstract void Execute();
-
-        public abstract string GetExecutable();
-
-        public abstract string GetArguments();
 
         public static Executor GetExecutor(Command command, string directory)
         {

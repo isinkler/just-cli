@@ -30,11 +30,11 @@ namespace JustCli.Configuration
 
             return default;
         }
-        
+
         public static void InitConfiguration()
         {
             var configFilePath = $"{Directory.GetCurrentDirectory()}\\{ConfigFileName}";
-            
+
             var config = new Config();
             string json = JsonConvert.SerializeObject(config, Formatting.Indented);
 

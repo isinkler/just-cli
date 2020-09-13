@@ -1,28 +1,28 @@
 ﻿namespace JustCli.Executors
 {
-    public class Run : Executor
+    public class Run : Executor, ICommandExecutor
     {
         public Run(string directory) : base(directory)
         {
         }
 
-        public override void Execute()
-        {
-            ExecuteCommand(GetExecutable(), GetArguments());
-        }
-
-        public override string GetExecutable()
+        public string GetExecutable()
         {
             string[] command = Configuration.Commands.Run.Split(' ', 2);
 
             return command[0];
         }
 
-        public override string GetArguments()
+        public string GetArguments()
         {
             string[] command = Configuration.Commands.Run.Split(' ', 2);
 
             return command[1];
+        }
+
+        public override void Execute()
+        {
+            ExecuteCommand(GetExecutable(), GetArguments());
         }
     }
 }

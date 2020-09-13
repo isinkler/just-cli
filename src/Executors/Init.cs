@@ -1,6 +1,4 @@
-﻿using System;
-
-using JustCli.Configuration;
+﻿using JustCli.Configuration;
 
 namespace JustCli.Executors
 {
@@ -9,16 +7,6 @@ namespace JustCli.Executors
         public override void Execute()
         {
             Configurator.InitConfiguration();
-        }
-
-        public override string GetExecutable()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string GetArguments()
-        {
-            throw new NotImplementedException();
         }
     }
 }
