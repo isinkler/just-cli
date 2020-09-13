@@ -3,9 +3,5 @@
     public interface IExecutor
     {
         void Execute();
-
-        string GetExecutable();
-
-        string GetArguments();
     }
 }

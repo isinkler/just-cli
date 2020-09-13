@@ -8,5 +8,7 @@
     public class Commands
     {
         public string Run { get; set; }
+
+        public string Init { get; set; }
     }
 }
