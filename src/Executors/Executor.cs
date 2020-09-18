@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 
 using JustCli.Configuration;
@@ -25,8 +24,14 @@ namespace JustCli.Executors
         {
             switch (command)
             {
+                case Command.Build:
+                    return new Build(directory);
+
                 case Command.Run:
                     return new Run(directory);
+                
+                case Command.Test:
+                    return new Test(directory);
 
                 case Command.Init:
                     return new Init();
@@ -34,8 +39,6 @@ namespace JustCli.Executors
                 default:
                     throw new ArgumentOutOfRangeException(nameof(command), command, null);
             }
-
-            throw new InvalidEnumArgumentException();
         }
 
         protected virtual void ExecuteCommand(string fileName, string arguments)
@@ -52,4 +55,6 @@ namespace JustCli.Executors
             process.WaitForExit();
         }
     }
+
+    
 }
