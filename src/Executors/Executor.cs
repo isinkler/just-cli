@@ -19,28 +19,7 @@ namespace JustCli.Executors
         protected Config Configuration { get; set; }
 
         public abstract void Execute();
-
-        public static Executor GetExecutor(Command command, string directory)
-        {
-            switch (command)
-            {
-                case Command.Build:
-                    return new Build(directory);
-
-                case Command.Run:
-                    return new Run(directory);
-                
-                case Command.Test:
-                    return new Test(directory);
-
-                case Command.Init:
-                    return new Init();
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(command), command, null);
-            }
-        }
-
+        
         protected virtual void ExecuteCommand(string fileName, string arguments)
         {
             var process = new Process
