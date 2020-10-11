@@ -36,6 +36,7 @@ namespace JustCli.Configuration
             var configFilePath = $"{Directory.GetCurrentDirectory()}\\{ConfigFileName}";
 
             var config = new Config();
+            config.Commands = new Commands();
             string json = JsonConvert.SerializeObject(config, Formatting.Indented);
 
             File.WriteAllText(configFilePath, json);

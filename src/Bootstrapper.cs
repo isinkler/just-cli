@@ -7,7 +7,7 @@ namespace JustCli
     internal class Bootstrapper
     {
         public static void Run(Command command, string directory)
-        {
+        {            
             var builder = new ContainerBuilder();
 
             builder.RegisterType<ExecutorService>().AsSelf();
