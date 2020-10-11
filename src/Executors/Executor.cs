@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 
 using JustCli.Configuration;
@@ -20,24 +19,7 @@ namespace JustCli.Executors
         protected Config Configuration { get; set; }
 
         public abstract void Execute();
-
-        public static Executor GetExecutor(Command command, string directory)
-        {
-            switch (command)
-            {
-                case Command.Run:
-                    return new Run(directory);
-
-                case Command.Init:
-                    return new Init();
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(command), command, null);
-            }
-
-            throw new InvalidEnumArgumentException();
-        }
-
+        
         protected virtual void ExecuteCommand(string fileName, string arguments)
         {
             var process = new Process
@@ -52,4 +34,6 @@ namespace JustCli.Executors
             process.WaitForExit();
         }
     }
+
+    
 }
