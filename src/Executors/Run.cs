@@ -1,5 +1,6 @@
 ﻿namespace JustCli.Executors
 {
+    [Command(Command.Run)]
     public class Run : Executor, ICommandExecutor
     {
         public Run(string directory) : base(directory)

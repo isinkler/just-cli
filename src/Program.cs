@@ -5,6 +5,11 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace JustCli
 {
+    /// <summary>
+    /// dotnet tool install --global --add-source .\src\nupkg\ just-cli
+    /// dotnet pack
+    /// dotnet tool uninstall -g just-cli
+    /// </summary>
     internal class Program
     {
         [Argument(0, Description = "Command to execute.")]
@@ -19,9 +24,7 @@ namespace JustCli
         }
 
         private void OnExecute()
-        {
-            Console.WriteLine(Command);
-            Console.WriteLine(ConfigDirectory);
+        {            
             Bootstrapper.Run(Command, ConfigDirectory);
         }
     }
